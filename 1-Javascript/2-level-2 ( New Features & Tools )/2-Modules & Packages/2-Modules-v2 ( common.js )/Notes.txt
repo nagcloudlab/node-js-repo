@@ -78,7 +78,7 @@ https://docs.npmjs.com/cli-documentation/
 
 
 ------------------------------------------------------------------------------
-ECMA , in ES6,  ES-modules
+ECMA , in ES6,  ES-modules  ( esm )
 ------------------------------------------------------------------------------
 
 
@@ -90,8 +90,12 @@ ECMA , in ES6,  ES-modules
  ==> to require/import any module , use 'import' keyword
  ==> group related modules as package with description file ( package.json )
 
+
  imp-note : neither Node.js nor browser  implemented this standard as default module standard, 
             
+
+            node.js => esm -> cjs
+            browser => esm -> cjs -> bundling main.js.chunk.js
 --------------------------------------------------------------------------------            
 
 

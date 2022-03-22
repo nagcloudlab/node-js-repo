@@ -21,7 +21,7 @@ using module standards & loaders from third-parties
 
 
         => AMD ( Async Module Definition )
-        => common.js module standard (  simple & pupular  )
+        => common.js module standard (  simple & pupular  ) ( cjs )
 
 ------------------------------------------------------------------------------
 
