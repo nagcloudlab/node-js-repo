@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Ex {
+public class TcpServer {
     public static void main(String[] args) throws Exception {
 
         System.out.println(Thread.currentThread());
@@ -34,6 +34,7 @@ public class Ex {
 
     private static Runnable clientHandler(Socket socket) {
         return () -> {
+            System.out.println(Thread.currentThread()+" handling connection");
             try (
                     BufferedReader reader = new BufferedReader(
                             new InputStreamReader(socket.getInputStream()));
