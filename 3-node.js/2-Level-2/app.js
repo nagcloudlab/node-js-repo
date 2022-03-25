@@ -1,28 +1,21 @@
 const path = require('path')
 const express = require('express')
+// const logger = require('./middlewares/logger')
+const morgan = require('morgan')
+
+const todosRouter=require('./routes/todos')
+
 const app = express();
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
-// app.get("/", (req, res) => {
-//     res.sendFile(path.join(__dirname, 'public', 'index.html'))
-// })
-// app.get("/css/bootstrap.css", (req, res) => {
-//     res.sendFile(path.join(__dirname, 'public', 'css/bootstrap.css'))
-// })
-// app.get("/images/tom-jerry-hugs.svg", (req, res) => {
-//     res.sendFile(path.join(__dirname, 'public', '/images/tom-jerry-hugs.svg'))
-// })
-
+// app.use(logger)
+app.use(morgan('tiny'))
 app.use(express.static(path.join(__dirname, 'public')))
-app.get("/topics", (req, res, next) => {
-    let topics = [
-        "javascript",
-        "typescript",
-        "node.js",
-        "express"
-    ]
-    res.status(200).json(topics)
-})
+
+app.use("/todos",todosRouter)
 
 app.listen(3000, () => {
     console.log("server up")

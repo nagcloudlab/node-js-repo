@@ -1,17 +1,21 @@
 console.log("-index.js-")
 
-const topicsBtn = document.getElementById('topics-btn')
-const topicsEle = document.getElementById('topics');
+const todosBtn = document.getElementById('todos-btn')
+const todosEle = document.getElementById('todos');
 
-topicsBtn.addEventListener('click', async e => {
-    let response = await fetch("topics")
-    let topics = await response.json()
-    let topicLiEles = topics.map(topic => {
+todosBtn.addEventListener('click', async e => {
+    let response = await fetch("todos?limit=3")
+    let todos = await response.json()
+    let todoLiEles = todos.map(todo => {
         return `
             <li class="list-group-item">
-                ${topic}
+               <div class="d-flex justify-content-around">
+                    <div>${todo.id}</div>
+                    <div>${todo.title}</div>
+                    <div>${todo.completed}</div>
+                </div>
             </li>
         `
     })
-    topicsEle.innerHTML = topicLiEles.join("")
+    todosEle.innerHTML = todoLiEles.join("")
 })
