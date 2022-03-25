@@ -1,0 +1,46 @@
+
+
+
+  steps to design rest-api
+  ---------------------------
+
+  1. Resource identification in requests
+
+     /speakers
+     /speakers/{id}
+     /speakers/{id}/sessions
+     /sessions
+     /sessions/{id}
+     /sessions/{is}/speakers
+
+  2. Resource manipulation through representations
+
+       - representation(s)
+
+            - html
+            - xml
+            - json  ( most )
+            - ...
+
+  3. Self-descriptive messages a.k.a headers
+
+        GET /speakers
+        Accept:'application/json'
+
+        POST /speakers
+        Content-Type:'application/json'
+
+  4. Hypermedia as the engine of application state (HATEOAS)
+
+
+----------------------------------------------------------------------------
+
+with REST-Api, if you implement any service 'RESTful service'
+
+----------------------------------------------------------------------------
+
+language : javascript
+runtime  : Node.js
+framework: Express , Nest
+
+-----------------------------------------------------------------------------

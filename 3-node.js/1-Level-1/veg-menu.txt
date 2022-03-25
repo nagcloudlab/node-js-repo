@@ -1,3 +1,0 @@
-veg-item-1
-veg-item-2
-veg-item-3
