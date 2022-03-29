@@ -1,0 +1,23 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Todo {
+  id: Int!
+  title: String!
+  completed: Boolean!
+}
+
+type Query {
+  todos: [Todo!]!
+  todos_by_pk(id: Int!): Todo!
+}
+
+type Mutation {
+  insert_todo_one(todoInput: CreateTodoDto!): Todo!
+}
+
+input CreateTodoDto {
+  title: String!
+  completed: Boolean!
+}

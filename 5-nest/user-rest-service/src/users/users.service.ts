@@ -14,7 +14,7 @@ export class UsersService {
         return this.userRepository.save(userEntity); // insert into user values() 
     }
     getUser(id: number): Promise<User> {
-        return this.userRepository.findOneOrFail(id) // select * from user where id=?
+        return this.userRepository.findOne(id) // select * from user where id=?
     }
 
     getUsers(): Promise<User[]> {

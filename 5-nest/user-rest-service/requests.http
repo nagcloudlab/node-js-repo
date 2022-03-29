@@ -9,15 +9,15 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "email":"Tom@email.com",
-    "password":"123456",
-    "fistName":"Tom",
-    "lastName":"T"
+    "email":"user@email.com",
+    "password":123456,
+    "fistName":"Po",
+    "lastName":"P"
 }
 
 ### get user
 
-GET http://localhost:3000/users/2
+GET http://localhost:3000/users/9
 
 
 ### get users
