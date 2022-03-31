@@ -27,7 +27,7 @@ function App() {
                 return (
                   <div key={idx} className='alert alert-danger'>
                     <span className='display-6'>{comment.stars}</span>&mdash;
-                    <span className='display-6'>{comment.user_id}</span>
+                    <span className='display-6'>{comment.user.name}</span>
                     <hr />
                     <div className='display-6'>{comment.body}</div>
                   </div>

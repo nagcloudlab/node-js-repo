@@ -17,8 +17,57 @@ router
             await client.connect();
             const database = client.db('shopdb');
             const productsColln = database.collection('products');
-            const cursor = await productsColln.find({});
+            //const cursor = await productsColln.find({});
+            //res.status(200).json(await cursor.toArray())
+
+            const cursor = await productsColln.aggregate([
+                { $unwind: "$comments" },
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "comments.user_id",
+                        foreignField: "_id",
+                        as: "comments.user"
+                    }
+                },
+                {
+                    $unwind: {
+                        path: '$comments.user'
+                    }
+                },
+                {
+                    $group: {
+                        _id: "$_id",
+                        comments: { $push: "$comments" }
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'products',
+                        localField: '_id',
+                        foreignField: '_id',
+                        as: "product"
+                    }
+                },
+                {
+                    $unwind: {
+                        path: '$product'
+                    }
+                },
+                {
+                    $addFields: {
+                        "product.comments": '$comments'
+                    }
+                },
+                {
+                    $replaceRoot: {
+                        newRoot: '$product'
+                    }
+                }
+            ])
+
             res.status(200).json(await cursor.toArray())
+
         } finally {
             // Ensures that the client will close when you finish/error
             await client.close();
