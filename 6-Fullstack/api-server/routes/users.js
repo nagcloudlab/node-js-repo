@@ -4,7 +4,8 @@ const { MongoClient } = require("mongodb");
 
 // Connection URI
 const uri =
-  "mongodb://localhost:27017";
+  "mongodb+srv://user1:userone@cluster0.socov.mongodb.net/shopdb?retryWrites=true&w=majority";
+
 // Create a new MongoClient
 const client = new MongoClient(uri);
 
@@ -27,8 +28,8 @@ router
     try {
       await client.connect();
       const database = client.db('shopdb');
-      const users = database.collection('users');
-      const cursor = await users.find({});
+      const usersColln = database.collection('users');
+      const cursor = await usersColln.find({});
       res.status(200).json(await cursor.toArray())
     } finally {
       // Ensures that the client will close when you finish/error
